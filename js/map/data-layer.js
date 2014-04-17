@@ -3,8 +3,8 @@
 	function DataLayer(options) {
 		this.grades = options.grades;
 		this.layer = new L.LayerGroup();
-		this.circleRadius_km = 30;		// in kilometer
-		this.rectangleHalfSize = 0.5;
+		this.circleRadius_km = options.circleRadius;		// in kilometer
+		this.rectangleHalfSize = options.gridSize / 2;
 	}
 	
 	DataLayer.prototype.plotPoints = function(data) {
@@ -18,7 +18,8 @@
 			point = data[i];
 			opacity = 1;
 			if (point.in === 'no') {
-				opacity = 0.0;
+				continue;
+				opacity = 0.2;
 			}
 			
 			color = this.getColor(point.val);

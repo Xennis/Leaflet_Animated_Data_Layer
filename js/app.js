@@ -1,4 +1,6 @@
 	var options = {
+		gridSize: 0.5,
+		circleRadius: 10, // 30
 		grades: [
 			{val:1,       label:"10<sup>1</sup>",  color:"rgb(255,0,0)"},
 			{val:0.1,     label:"10<sup>-1</sup>", color:'yellow'},
@@ -9,11 +11,16 @@
 	};
 
 	var mapDisplay = new MapDisplay('map');
+	var animatedLayer = new AnimatedLayer(options);
+	var navigationBar = new NavigationBar();
+	
 	mapDisplay.addLegend(options);
 	//mapDisplay.addTitle("Title", "Subtitle");
-	var map = mapDisplay.map;
-		
-	var animatedLayer = new AnimatedLayer(options);
-	var navigationBar = new NavigationBar(zamgTestData.data.length);
-		
-	animatedLayer.setData(zamgTestData.data);
+	var map = mapDisplay.map;		
+	
+	var setData = function(data) {
+		navigationBar.init(data.length);
+		animatedLayer.setData(data);
+	};
+	
+	setData(zamgTestData1.data);

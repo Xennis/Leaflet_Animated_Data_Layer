@@ -7,15 +7,15 @@
 	 * @param {number} dataLength Length of the given data
 	 * @return {void}
 	 */
-	function NavigationBar(dataLength) {		
+	function NavigationBar() {		
 		this.button_start = $("#button_start");
 		this.button_pause = $("#button_pause");
 		this.checkbox_loop = $("#checkbox_loop");
 		this.select_visualization = $("#select_visualization");
 		this.input_date = $("#input_date");
 		this.slider_date = $("#slider_date");
+		this.select_data = $("#select_data");
 		
-		this.init(dataLength);
 		this.observe();
 	}
 	
@@ -35,10 +35,11 @@
 	 * @return {void}
 	 */
 	NavigationBar.prototype.reset = function() {
+		console.log("rest nav");
 		this.button_start.text("Start");
 		this.button_pause.text("Pause");
 		this.button_pause.prop("disabled", true);
-		this.input_date.text("");
+		this.input_date.val("");
 		this.slider_date.val(0);
 	};
 	
@@ -75,7 +76,6 @@
 				animatedLayer.animationStart();
 			} else {
 				animatedLayer.animationStop();
-				_this.reset();
 			}
 		});
 		
@@ -98,6 +98,18 @@
 			animatedLayer.animationPause();
 			animatedLayer.showMoment();			
 		});
+
+		this.select_data.change(function() {
+			animatedLayer.animationStop();
+			var val = $(this).val();
+			if (val === 'seviriTestData1') {
+				setData(seviriTestData1.data);
+			} else if (val === 'zamgTestData1') {
+				setData(zamgTestData1.data);
+			} else if (val === 'zamgTestData2') {
+				setData(zamgTestData2.data);
+			}
+		});		
 		
 		this.slider_date.change(function() {
 			_this.animatedStarted();

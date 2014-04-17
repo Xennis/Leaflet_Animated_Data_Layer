@@ -82,6 +82,7 @@
 	 * @return {void}
 	 */
 	AnimatedLayer.prototype.animationStart = function() {
+		console.log("animationStart");
 		this.isPaused = false;
 		this.momentIndex = 0;
 		this.animate();
