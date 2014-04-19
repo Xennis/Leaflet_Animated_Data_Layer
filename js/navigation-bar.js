@@ -4,7 +4,6 @@
 	 * Naviagation bar
 	 * 
 	 * @constructor
-	 * @param {number} dataLength Length of the given data
 	 * @return {void}
 	 */
 	function NavigationBar() {		
@@ -15,17 +14,18 @@
 		this.input_date = $("#input_date");
 		this.slider_date = $("#slider_date");
 		this.select_data = $("#select_data");
+		this._observeSemaphore = false;		// Prevent observe function get calls twice
 		
 		this.observe();
 	}
 	
 	/**
-	 * Intitializes all elements.
+	 * Configurates all elements.
 	 * 
 	 * @param {number} dataLength Length of the given data
 	 * @return {void}
 	 */
-	NavigationBar.prototype.init = function(dataLength) {
+	NavigationBar.prototype.config = function(dataLength) {
 		this.slider_date.attr('max', dataLength - 1);
 	};
 	
@@ -35,7 +35,6 @@
 	 * @return {void}
 	 */
 	NavigationBar.prototype.reset = function() {
-		console.log("rest nav");
 		this.button_start.text("Start");
 		this.button_pause.text("Pause");
 		this.button_pause.prop("disabled", true);
@@ -67,6 +66,16 @@
 	 * @return {void}
 	 */
 	NavigationBar.prototype.observe = function() {
+		/*
+		 * Prevent that the function gets called twice.
+		 */
+		if (this._observeSemaphore) {
+			console.log("ERROR: Function was already called!");
+			return;
+		} else {
+			this._observeSemaphore = true;
+		}
+
 		var _this = this;
 
 		this.button_start.click(function() {

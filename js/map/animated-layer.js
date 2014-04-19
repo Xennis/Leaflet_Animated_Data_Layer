@@ -12,11 +12,13 @@
 	 * @return {void}
 	 */
 	function AnimatedLayer(options) {
-		this.options = options;
 		this.data = [];
 		this.momentIndex = 0;
 		this.isPaused = false;
 		this.isLooped = false;
+		this.dataLayerGroup;
+		this.dataLayer = new DataLayer(options);
+		this._debugStartTime;
 	}
 	
 	/**
@@ -36,13 +38,12 @@
 	 * @return {void}
 	 */
 	AnimatedLayer.prototype.showMoment = function(index) {
-		if (index >= 0) {
+		if (index) {
 			this.momentIndex = index;
 		}
-		this.clearMap();
-		navigationBar.update(this.momentIndex, this.data[this.momentIndex].date * 1000);
-		var animatedLayer = new DataLayer(this.options);
-		animatedLayer.plotPoints(this.data[this.momentIndex].points);
+		var dataEntry = this.data[this.momentIndex];
+		navigationBar.update(this.momentIndex, dataEntry.date * 1000);
+		this.dataLayer.plotPoints(dataEntry.points);
 	};
 	
 	/**
@@ -82,7 +83,8 @@
 	 * @return {void}
 	 */
 	AnimatedLayer.prototype.animationStart = function() {
-		console.log("animationStart");
+		this._debugStartTime = new Date().getTime();
+		console.log("animation started at " + this._debugStartTime);
 		this.isPaused = false;
 		this.momentIndex = 0;
 		this.animate();
@@ -114,7 +116,8 @@
 	 * @return {void}
 	 */
 	AnimatedLayer.prototype.animationStop = function() {
-		console.log("animationStop");
+		var _debugEndTime = new Date().getTime();
+		console.log("animation stoped at " + _debugEndTime + ", " + (_debugEndTime - this._debugStartTime) + "ms");
 		this.animationPause();
 		this.clearMap();
 		navigationBar.reset();
@@ -131,6 +134,10 @@
 	};		
 	
 	AnimatedLayer.prototype.clearMap = function() {
+//		if (this.dataLayerGroup) {
+//			this.dataLayerGroup.clearLayers();
+//			map.removeLayer(this.dataLayerGroup);			
+//		}
 		for(i in map._layers){
 			if(map._layers[i]._path != undefined) {
 				try {
@@ -140,4 +147,4 @@
 				}
 			}
 		}
-	}
+	};

@@ -11,15 +11,15 @@
 	};
 
 	var mapDisplay = new MapDisplay('map');
+	var map = mapDisplay.map;
 	var animatedLayer = new AnimatedLayer(options);
 	var navigationBar = new NavigationBar();
 	
 	mapDisplay.addLegend(options);
-	//mapDisplay.addTitle("Title", "Subtitle");
-	var map = mapDisplay.map;		
+	//mapDisplay.addTitle("Title", "Subtitle");		
 	
 	var setData = function(data) {
-		navigationBar.init(data.length);
+		navigationBar.config(data.length);
 		animatedLayer.setData(data);
 	};
 	
