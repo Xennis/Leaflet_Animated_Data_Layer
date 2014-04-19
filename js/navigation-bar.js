@@ -56,9 +56,9 @@
 	};
 	
 	NavigationBar.prototype.animatedStarted = function() {
-		this.button_start.text("Stop");
-		this.button_pause.prop("disabled", false);
-		this.button_pause.text("Resume");	
+		this.button_start.text('Stop');
+		this.button_pause.prop('disabled', false);
+		this.button_pause.text('Resume');	
 	};
 	
 	/**
@@ -71,7 +71,7 @@
 		 * Prevent that the function gets called twice.
 		 */
 		if (this._observeSemaphore) {
-			console.log("ERROR: Function was already called!");
+			console.log('ERROR: Function was already called!');
 			return;
 		} else {
 			this._observeSemaphore = true;
@@ -80,9 +80,9 @@
 		var _this = this;
 
 		this.button_start.click(function() {
-			if ($(this).text() === "Start") {
-				$(this).text("Stop");
-				_this.button_pause.prop("disabled", false);
+			if ($(this).text() === 'Start') {
+				$(this).text('Stop');
+				_this.button_pause.prop('disabled', false);
 				animatedLayer.animationStart();
 			} else {
 				animatedLayer.animationStop();
@@ -90,11 +90,11 @@
 		});
 		
 		this.button_pause.click(function() {
-			if ($(this).text() === "Pause") {
-				$(this).text("Resume");
+			if ($(this).text() === 'Pause') {
+				$(this).text('Resume');
 				animatedLayer.animationPause();
 			} else {
-				$(this).text("Pause");
+				$(this).text('Pause');
 				animatedLayer.animationResume();
 			}
 		});
@@ -106,7 +106,8 @@
 		this.select_visualization.change(function() {
 			_this.animatedStarted();
 			animatedLayer.animationPause();
-			animatedLayer.showMoment();			
+			animatedLayer.dataLayer.setVisualizationType($(this).val());
+			animatedLayer.showMoment();		
 		});
 		
 		this.select_speed.change(function() {
@@ -117,11 +118,11 @@
 			animatedLayer.animationStop();
 			var val = $(this).val();
 			if (val === 'seviriTestData1') {
-				setData(seviriTestData1.data);
+				setData(seviriTestData1.data, options);
 			} else if (val === 'zamgTestData1') {
-				setData(zamgTestData1.data);
+				setData(zamgTestData1.data, options2);
 			} else if (val === 'zamgTestData2') {
-				setData(zamgTestData2.data);
+				setData(zamgTestData2.data, options);
 			}
 		});		
 		
@@ -131,4 +132,11 @@
 			animatedLayer.showMoment($(this).val());
 		});
 		
+		this.slider_date.hover(
+			function() {
+				_this.input_date.addClass('hover');
+			}, function() {
+				_this.input_date.removeClass('hover');
+			}
+		);
 	};

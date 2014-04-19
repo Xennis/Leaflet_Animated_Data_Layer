@@ -23,6 +23,16 @@
 	}
 	
 	/**
+	 * Sets the options.
+	 * 
+	 * @param {Object} options
+	 * @return {void}
+	 */
+	AnimatedLayer.prototype.setOptions = function (options) {
+		this.dataLayer.setOptions(options);
+	};
+	
+	/**
 	 * Sets the data.
 	 * 
 	 * @param {Object} data
@@ -79,7 +89,7 @@
 					return;
 				}
 			}
-			setTimeout(function() {
+			window.setTimeout(function() {
 				window.requestAnimFrame(function() {
 				return doDraw();
 			});
@@ -136,6 +146,7 @@
 		console.log("animation stoped at " + _debugEndTime + ", " + (_debugEndTime - this._debugStartTime) + "ms");
 		this.animationPause();
 		this.clearMap();
+		this.momentIndex = 0; // TODO: dublicated with animationStart
 		navigationBar.reset();
 	};
 	
