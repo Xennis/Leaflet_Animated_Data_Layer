@@ -19,6 +19,12 @@ button, input, select {
 
 #slider_date {
 	width: 98%;
+	display: block;
+	margin: 10px;
+}
+
+fieldset {
+	display: inline;
 }
 
 /*

@@ -11,6 +11,7 @@
 		this.button_pause = $("#button_pause");
 		this.checkbox_loop = $("#checkbox_loop");
 		this.select_visualization = $("#select_visualization");
+		this.select_speed = $("#select_speed");
 		this.input_date = $("#input_date");
 		this.slider_date = $("#slider_date");
 		this.select_data = $("#select_data");
@@ -106,6 +107,10 @@
 			_this.animatedStarted();
 			animatedLayer.animationPause();
 			animatedLayer.showMoment();			
+		});
+		
+		this.select_speed.change(function() {
+			animatedLayer.setSpeed($(this).val());
 		});
 
 		this.select_data.change(function() {

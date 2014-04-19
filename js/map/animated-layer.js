@@ -19,6 +19,7 @@
 		this.dataLayerGroup;
 		this.dataLayer = new DataLayer(options);
 		this._debugStartTime;
+		this.speed_fpms = 1;	// Speed in frames per milliseconds
 	}
 	
 	/**
@@ -29,6 +30,16 @@
 	 */
 	AnimatedLayer.prototype.setData = function(data) {
 		this.data = data;
+	};
+	
+	/**
+	 * Sets the speed of the animation.
+	 * 
+	 * @param {number} speed_fps Speed in frames per seconds
+	 * @return {void}
+	 */
+	AnimatedLayer.prototype.setSpeed = function(speed_fps) {
+		this.speed_fpms = 1000 / speed_fps;
 	};
 	
 	/**
@@ -68,9 +79,14 @@
 					return;
 				}
 			}
-			return window.requestAnimFrame(function() {
+			setTimeout(function() {
+				window.requestAnimFrame(function() {
 				return doDraw();
 			});
+			}, _this.speed_fpms);
+//			return window.requestAnimFrame(function() {
+//				return doDraw();
+//			});
 		};
 		return window.requestAnimFrame(function() {
 			return doDraw();
