@@ -19,7 +19,7 @@
 		this.dataLayerGroup;
 		this.dataLayer = new DataLayer(options);
 		this._debugStartTime;
-		this.speed_fpms = 1;	// Speed in frames per milliseconds
+		this.setSpeed(10);
 	}
 	
 	/**

@@ -38,15 +38,16 @@
 			opacity = 1;
 			if (point.in === 'no') {
 				continue;
-				opacity = 0.2;
+				opacity = 0.3;
 			}
 			
-			color = this.getColor(point.val);
+//			color = this.getColor(point.val);
 			
 			options = {
-				color: color,
-				opacity: opacity,
-				fillColor: color,
+				weight: 0,
+//				color: color,
+//				opacity: opacity,
+				fillColor: this.getColor(point.val),
 				fillOpacity: opacity
 			};
 

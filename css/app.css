@@ -12,6 +12,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	padding: 10px;
 	border-top: 1px solid #38f;
+	display: block;
 }
 button, input, select {
 	font-family: 'Roboto', sans-serif;

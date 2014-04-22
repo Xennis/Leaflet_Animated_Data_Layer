@@ -18,7 +18,7 @@
 		var midnightLayer  = L.tileLayer(cloudmadeUrl, {styleId: 999, attribution: cloudmadeAttribution});
 	
 		this.map = new L.Map(this.id, {
-			center: [36, 48],
+			center: [47, 20],
 			zoom: 4,
 			layers: [midnightLayer, baseLayer]
 		});

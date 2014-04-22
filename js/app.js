@@ -8,13 +8,13 @@
 	
 	var options = {
 		gridSize: 0.5,
-		circleRadius: 10, // 30
+		circleRadius: 20, // 30
 		grades: grades
 	};
 
 	var options2 = {
 		gridSize: 1,
-		circleRadius: 10, // 30
+		circleRadius: 20, // 30
 		grades: grades
 	};
 
