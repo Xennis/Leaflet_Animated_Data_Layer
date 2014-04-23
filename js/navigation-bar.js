@@ -4,9 +4,11 @@
 	 * Naviagation bar
 	 * 
 	 * @constructor
+	 * @param {AnimatedLayer} animatedLayer
 	 * @return {void}
 	 */
-	function NavigationBar() {		
+	function NavigationBar(animatedLayer) {
+		this.animatedLayer = animatedLayer;
 		this.button_start = $("#button_start");
 		this.button_pause = $("#button_pause");
 		this.checkbox_loop = $("#checkbox_loop");
@@ -83,39 +85,39 @@
 			if ($(this).text() === 'Start') {
 				$(this).text('Stop');
 				_this.button_pause.prop('disabled', false);
-				animatedLayer.animationStart();
+				_this.animatedLayer.animationStart();
 			} else {
-				animatedLayer.animationStop();
+				_this.animatedLayer.animationStop();
 			}
 		});
 		
 		this.button_pause.click(function() {
 			if ($(this).text() === 'Pause') {
 				$(this).text('Resume');
-				animatedLayer.animationPause();
+				_this.animatedLayer.animationPause();
 			} else {
 				$(this).text('Pause');
-				animatedLayer.animationResume();
+				_this.animatedLayer.animationResume();
 			}
 		});
 		
 		this.checkbox_loop.change(function() {
-			animatedLayer.animationLoop($(this).prop('checked'));
+			_this.animatedLayer.animationLoop($(this).prop('checked'));
 		});
 		
 		this.select_visualization.change(function() {
 			_this.animatedStarted();
-			animatedLayer.animationPause();
-			animatedLayer.dataLayer.setVisualizationType($(this).val());
-			animatedLayer.showMoment();		
+			_this.animatedLayer.animationPause();
+			_this.animatedLayer.dataLayer.setVisualizationType($(this).val());
+			_this.animatedLayer.showMoment();		
 		});
 		
 		this.select_speed.change(function() {
-			animatedLayer.setSpeed($(this).val());
+			_this.animatedLayer.setSpeed($(this).val());
 		});
 
 		this.select_data.change(function() {
-			animatedLayer.animationStop();
+			_this.animatedLayer.animationStop();
 			var val = $(this).val();
 			if (val === 'seviriTestData1') {
 				setData(seviriTestData1.data, options);
@@ -128,8 +130,8 @@
 		
 		this.slider_date.change(function() {
 			_this.animatedStarted();
-			animatedLayer.animationPause();
-			animatedLayer.showMoment($(this).val());
+			_this.animatedLayer.animationPause();
+			_this.animatedLayer.showMoment($(this).val());
 		});
 		
 		this.slider_date.hover(

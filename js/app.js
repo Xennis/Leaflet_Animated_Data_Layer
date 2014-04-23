@@ -8,20 +8,20 @@
 	
 	var options = {
 		gridSize: 0.5,
-		circleRadius: 20, // 30
+		circleRadius: 30,
 		grades: grades
 	};
 
 	var options2 = {
 		gridSize: 1,
-		circleRadius: 20, // 30
+		circleRadius: 30,
 		grades: grades
 	};
 
 	var mapDisplay = new MapDisplay('map');
 	var map = mapDisplay.map;
 	var animatedLayer = new AnimatedLayer(options);
-	var navigationBar = new NavigationBar();
+	var navigationBar = new NavigationBar(animatedLayer);
 	
 	mapDisplay.addLegend(options);
 	//mapDisplay.addTitle("Title", "Subtitle");		

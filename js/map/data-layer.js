@@ -56,7 +56,7 @@
 			} else if (_visualizationType === 'rectangle') {
 				L.rectangle([[point.lat - this.rectangleHalfSize, point.lon - this.rectangleHalfSize], [point.lat + this.rectangleHalfSize, point.lon + this.rectangleHalfSize]], options).addTo(this.layer);
 			} else if (_visualizationType === 'dot') {
-				L.circle([point.lat, point.lon], 1000, options).addTo(this.layer);				
+				L.circle([point.lat, point.lon], 8000, options).addTo(this.layer);				
 			}
 		}
 	};

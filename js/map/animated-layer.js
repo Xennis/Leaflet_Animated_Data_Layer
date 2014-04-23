@@ -122,7 +122,7 @@
 	 * @return {void}
 	 */	
 	AnimatedLayer.prototype.animationPause = function() {
-			this.isPaused = true;
+		this.isPaused = true;
 	};
 	
 	/**
@@ -131,9 +131,9 @@
 	 * @return {void}
 	 */	
 	AnimatedLayer.prototype.animationResume = function() {
-			console.log("resume");
-			this.isPaused = false;
-			this.animate();
+		console.log("resume");
+		this.isPaused = false;
+		this.animate();
 	};
 	
 	/**
