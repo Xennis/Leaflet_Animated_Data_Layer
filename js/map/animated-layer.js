@@ -161,6 +161,7 @@
 	};		
 	
 	AnimatedLayer.prototype.clearMap = function() {
+		this.dataLayer.clear();
 //		if (this.dataLayerGroup) {
 //			this.dataLayerGroup.clearLayers();
 //			map.removeLayer(this.dataLayerGroup);			

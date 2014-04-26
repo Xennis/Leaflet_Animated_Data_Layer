@@ -29,7 +29,8 @@
 		};
 		
 		L.control.layers(baseMaps).addTo(this.map);
-			
+		//L.control.scale().addTo(map);
+	
 		return;
 	};
 	
