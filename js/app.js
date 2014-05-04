@@ -27,7 +27,7 @@
 	
 	mapDisplay.addLegend(options);
 	//mapDisplay.addTitle("Title", "Subtitle");		
-	
+
 	var setData = function(data, options) {
 		navigationBar.config(data.length);
 		animatedLayer.setOptions(options);

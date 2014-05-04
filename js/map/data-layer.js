@@ -8,12 +8,15 @@
 		
 		this.heatmapLayer = new L.TileLayer.WebGLHeatMap({
 				size: 270 * 1000,
-				opacity: 1,
+//				size: 180 * 1000,
+				opacity: 0.8,
 				gradientTexture: false,
 				alphaRange: 1,
 				autoresize: true
 			});
 		map.addLayer(this.heatmapLayer);
+		this.recLayer = new L.TileLayer.RecLayer();
+		map.addLayer(this.recLayer);
 	}
 	
 	/**
@@ -53,6 +56,7 @@
 
 		this.layer.clearLayers();
 		this.heatmapLayer.clearData();
+		this.recLayer.dataClear();
 
 		for(var i=0, len=data.length; i < len; i++) {
 			point = data[i];
@@ -60,7 +64,10 @@
 			if (_visualizationType === 'heatmap') {
 				this.heatmapLayer.addDataPoint(point.lat, point.lon, this.getXc(point.val));
 				continue;
-			}
+			} else if (_visualizationType === 'rec') {
+				this.recLayer.dataAddPoint(point);
+				continue;
+			} 
 
 			if (point.in === 'no') {
 				continue;
@@ -86,6 +93,8 @@
 		
 		if (_visualizationType === 'heatmap') {
 			this.heatmapLayer.update();
+		}  else if (_visualizationType === 'rec') {
+			this.recLayer._plot();
 		}
 
 	};
@@ -104,7 +113,7 @@
            v > this.grades[3].val ? this.grades[3].color :
                                     this.grades[4].color;
 	};
-	
+
 	/**
 	 * 
 	 * 

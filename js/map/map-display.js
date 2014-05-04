@@ -12,7 +12,7 @@
 		this.id = id;
 		
 		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/ad132e106cd246ec961bbdfbe0228fe8/{styleId}/256/{z}/{x}/{y}.png';
-		var cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>';
+		var cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>';
 
 		var baseLayer = L.tileLayer(cloudmadeUrl, {maxZoom: 18, styleId: 997, attribution: cloudmadeAttribution});
 		var midnightLayer  = L.tileLayer(cloudmadeUrl, {styleId: 999, attribution: cloudmadeAttribution});
@@ -27,7 +27,7 @@
 			"Night View": midnightLayer,
 			"Minimal": baseLayer
 		};
-		
+
 		L.control.layers(baseMaps).addTo(this.map);
 		//L.control.scale().addTo(map);
 	
