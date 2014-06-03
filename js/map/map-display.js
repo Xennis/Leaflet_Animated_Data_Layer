@@ -4,20 +4,25 @@
 	 * MapDisplay
 	 * 
 	 * @constructor
-	 * @param {HTMLElement|String} id Div element or its ID for the map
+	 * @param {HTMLElement|String} elementID Div element or its ID for the map
 	 * @return {void}
 	 */
-	function MapDisplay(id) {
-			
-		this.id = id;
-		
+	function MapDisplay(elementID) {
+
 		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/ad132e106cd246ec961bbdfbe0228fe8/{styleId}/256/{z}/{x}/{y}.png';
 		var cloudmadeAttribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://cloudmade.com">CloudMade</a>';
 
-		var baseLayer = L.tileLayer(cloudmadeUrl, {maxZoom: 18, styleId: 997, attribution: cloudmadeAttribution});
-		var midnightLayer  = L.tileLayer(cloudmadeUrl, {styleId: 999, attribution: cloudmadeAttribution});
+		var baseLayer = L.tileLayer(cloudmadeUrl, {
+			maxZoom: 18,
+			styleId: 997,
+			attribution: cloudmadeAttribution
+		});
+		var midnightLayer  = L.tileLayer(cloudmadeUrl, {
+			styleId: 999,
+			attribution: cloudmadeAttribution
+		});
 	
-		this.map = new L.Map(this.id, {
+		this.map = L.map(elementID, {
 			center: [47, 20],
 			zoom: 4,
 			layers: [midnightLayer, baseLayer]
@@ -30,8 +35,6 @@
 
 		L.control.layers(baseMaps).addTo(this.map);
 		//L.control.scale().addTo(map);
-	
-		return;
 	};
 	
 	/**
