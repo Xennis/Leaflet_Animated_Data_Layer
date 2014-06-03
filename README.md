@@ -4,10 +4,10 @@
 
 JavaScript libraries
 
-* [jQuery](http://jquery.com) (v2.1.0)
-* [Leaflet](http://leafletjs.com/) (v0.7.2)
-* [WebGL Heatmap Leaflet Plugin](https://github.com/ursudio/webgl-heatmap-leaflet)
-    * [WebGL Heatmap](http://github.com/pyalot/webgl-heatmap) (v0.0.1)
+* [jQuery](http://jquery.com) (v.2.1.0)
+* [Leaflet](http://leafletjs.com/) (v.0.7.2)
+* (optional) [webgl-heatmap-leaflet](https://github.com/ursudio/webgl-heatmap-leaflet)
+    * (optional) [webgl-heatmap](http://github.com/pyalot/webgl-heatmap) (v.0.0.1)
 
 ### Getting started
 
