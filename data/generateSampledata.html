@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+	<head>
+
+	</head>
+	<body>
+
+		<script>
+		var getRandom = function(min, max) {
+    		return Math.floor(Math.random()*(max-min+1)+min);
+		}
+
+		var generate = function(config) {
+			var data = [];
+			for (var i = 0; i < config.step.num; i++) {
+				var points = [];
+
+				// Random number of points for this timestamp
+				var pointsNum = getRandom( (i+1) * 20, (i+1) * 45 );
+ 				for (var j = 0; j < pointsNum ; j++) {
+ 					points.push({
+ 						// Range latidue -90 to 90
+ 						lat: (config.grid.center.lat + getRandom(-config.grid.size+i, config.grid.size+i) ) % 90,
+ 						// Range longitude -180 to 180
+ 						lon: (config.grid.center.lon + getRandom(-config.grid.size+i, config.grid.size+i) ) % 180,
+ 						val: getRandom(config.value.min, config.value.max * 1000) / (config.value.max * 1000),
+ 					});
+				}
+
+				data.push({
+					date: config.startDate + i * config.step.size,
+					points: points
+				});
+
+				// Move center point of the grid
+				config.grid.center.lat += config.grid.step.lat;
+				config.grid.center.lon += config.grid.step.lon;
+			};
+
+			return data;
+		};
+
+		var data = generate({
+			startDate: 1419098400,
+			step: {
+				// gets added to startDate in each iteration
+				size: 3600,
+				// number of iterations
+				num: 24
+			},
+			value: {
+				min: 0,
+				max: 4
+			},
+			grid: {
+				center: {
+					lat: 32.0,
+					lon: 36.0					
+				},
+				step: {
+					lat: 0.5,
+					lon: 1
+				},
+				size: 20
+			}
+		});
+
+		console.log(JSON.stringify(data));
+		</script>
+		
+	</body>
+</html>

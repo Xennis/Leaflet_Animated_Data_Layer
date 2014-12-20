@@ -120,7 +120,7 @@
 			_this.animatedLayer.animationStop();
 			var val = $(this).val();
 			if (val === 'sampleData1') {
-				setData(sampleData1.data, options);
+				setData(sampleData1.data, options1);
 			}
 		});		
 		

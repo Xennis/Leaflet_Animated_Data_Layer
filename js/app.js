@@ -15,10 +15,10 @@
 
 	var mapDisplay = new MapDisplay('map');
 	var map = mapDisplay.map;
-	var animatedLayer = new AnimatedLayer(options);
+	var animatedLayer = new AnimatedLayer(options1);
 	var navigationBar = new NavigationBar(animatedLayer);
 	
-	mapDisplay.addLegend(options);
+	mapDisplay.addLegend(options1);
 	//mapDisplay.addTitle("Title", "Subtitle");		
 
 	var setData = function(data, options) {
@@ -27,4 +27,4 @@
 		animatedLayer.setData(data);
 	};
 	
-	setData(sampleData1.data, options2);
+	setData(sampleData1.data, options1);

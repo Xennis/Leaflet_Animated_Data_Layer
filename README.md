@@ -37,6 +37,18 @@ var sampleData = { ... , "data":
 ```
 (The `data` array contains entries, which have a timestamp in seconds as `date` and an array named `points`. This neasted array contains all points for the spefic `date` and each entry has a location (latitude `lat` and longitude `lon`) and a value `val`.)
 
+### Demo and screenshots
+
+**Demo**: http://xennis.github.io/Leaflet_Animated_Data_Layer/
+
+Visualization type: heatmap
+
+![heatmap](_screenshots/heatmap.png)
+
+Visualization type: circle
+
+![circle](_screenshots/circle.png)
+
 ### Credit
 
 The idea of the animated layer based on the [NYTCommentsMap](https://github.com/alastaircoote/NYTCommentsMap) by [Alastair Coote](https://github.com/alastaircoote).
