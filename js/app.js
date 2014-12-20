@@ -6,14 +6,7 @@
 		{val:0.00001, label:'10<sup>-5</sup>', color:'rgb(0,0,255)'}
 	];
 	
-	var options = {
-		gridSize: 0.5,
-		circleRadius: 20,
-		grades: grades,
-		fillOpacity: 0.8
-	};
-
-	var options2 = {
+	var options1 = {
 		gridSize: 1,
 		circleRadius: 30,
 		grades: grades,
@@ -34,4 +27,4 @@
 		animatedLayer.setData(data);
 	};
 	
-	setData(zamgTestData1.data, options2);
+	setData(sampleData1.data, options2);
