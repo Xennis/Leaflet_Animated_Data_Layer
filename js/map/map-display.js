@@ -10,31 +10,31 @@
 	function MapDisplay(elementID) {
 
 		// Replace 'examples.map-i87786ca' with your map id.
-		var mapboxUrl = 'https://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png'
-		var mapboxAttribution = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>';
+		var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+		var osmAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
 
-		var baseLayer = L.tileLayer(mapboxUrl, {
+		var baseLayer = L.tileLayer(osmUrl, {
 			maxZoom: 18,
 			styleId: 997,
-			attribution: mapboxAttribution
+			attribution: osmAttribution
 		});
-		var midnightLayer  = L.tileLayer(mapboxUrl, {
-			styleId: 999,
-			attribution: mapboxAttribution
-		});
+		//var midnightLayer  = L.tileLayer(osmUrl, {
+		//	styleId: 999,
+		//	attribution: osmAttribution
+		//});
 	
 		this.map = L.map(elementID, {
 			center: [47, 20],
 			zoom: 4,
-			layers: [midnightLayer, baseLayer]
+			layers: [baseLayer]
 		});
-		
-		var baseMaps = {
-			"Night View": midnightLayer,
-			"Minimal": baseLayer
-		};
-
-		L.control.layers(baseMaps).addTo(this.map);
+		//
+		//var baseMaps = {
+		//	"Night View": midnightLayer,
+		//	"Minimal": baseLayer
+		//};
+		//
+		//L.control.layers(baseMaps).addTo(this.map);
 		//L.control.scale().addTo(map);
 	};
 	
