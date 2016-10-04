@@ -4,12 +4,12 @@ L.TileLayer.RecLayer = L.Class.extend( {
 		opacity: 1
 	},
 	
-    initialize: function (options) {
-        this._data = [];
+	initialize: function (options) {
+		this._data = [];
 		this._map;
 		this._canvas;
-        L.setOptions(this, options);
-    },
+		L.setOptions(this, options);
+	},
 	
 	setOptions: function (options) {
 		L.setOptions(this, options);
@@ -35,25 +35,25 @@ L.TileLayer.RecLayer = L.Class.extend( {
 		if (!this._canvas) {
 			this._initCanvas();
 		}
-				
+		
 		map.getPanes().overlayPane.appendChild(this._canvas);
 
-		map.on("moveend", this._plot, this);
+		map.on('moveend', this._plot, this);
 		/* hide layer on zoom, because it doesn't animate zoom */
-		map.on("zoomstart", this._hide, this);
-		map.on("zoomend", this._show, this);
+		map.on('zoomstart', this._hide, this);
+		map.on('zoomend', this._show, this);
 		
-        this._plot();
+		this._plot();
 	},
 	
 	resize: function() {
 		var mapSize = this._map.getSize();
 		this._canvas.width = mapSize.x;
-		this._canvas.height = mapSize.y;		
+		this._canvas.height = mapSize.y;
 	},
 	
 	onRemove: function (map) {
-        map.getPanes().overlayPane.removeChild(this._canvas);		
+		map.getPanes().overlayPane.removeChild(this._canvas);
 	},
 	
 	update: function () {
@@ -62,11 +62,11 @@ L.TileLayer.RecLayer = L.Class.extend( {
 	
 	_initCanvas: function() {
 		var mapSize = this._map.getSize();
-		var canvas = this._canvas = document.createElement("canvas"); 
-        canvas.width = mapSize.x;
-        canvas.height = mapSize.y;
-        canvas.style.opacity = this.options.opacity;
-        canvas.style.position = 'absolute';
+		var canvas = this._canvas = document.createElement('canvas');
+		canvas.width = mapSize.x;
+		canvas.height = mapSize.y;
+		canvas.style.opacity = this.options.opacity;
+		canvas.style.position = 'absolute';
 	},
 	
 	_hide: function () {
@@ -89,10 +89,7 @@ L.TileLayer.RecLayer = L.Class.extend( {
 	_plot: function () {
 		this.resize();
 
-//		this._canvas.appendChild(c);
-
-	    this._ctx = this._canvas.getContext('2d');
-//		console.log(this._canvas.width + "--" + this._canvas.height);
+		this._ctx = this._canvas.getContext('2d');
 		this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 		//		this._ctx.drawImage(this._drawRectangle(200,200, 0.7), 10, 10);	
 		var dataEntry, pointNW, pointSE, width, height, imgage;
@@ -116,10 +113,10 @@ L.TileLayer.RecLayer = L.Class.extend( {
 	 */
 	getColor: function(v) {
 		return v > this.grades[0].val ? this.grades[0].color :
-           v > this.grades[1].val ? this.grades[1].color :
-           v > this.grades[2].val ? this.grades[2].color :
-           v > this.grades[3].val ? this.grades[3].color :
-                                    this.grades[4].color;
+			v > this.grades[1].val ? this.grades[1].color :
+			v > this.grades[2].val ? this.grades[2].color :
+			v > this.grades[3].val ? this.grades[3].color :
+			this.grades[4].color;
 	},
 	
 });

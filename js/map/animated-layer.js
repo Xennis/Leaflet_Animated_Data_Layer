@@ -110,7 +110,7 @@
 	 */
 	AnimatedLayer.prototype.animationStart = function() {
 		this._debugStartTime = new Date().getTime();
-		console.log("animation started at " + this._debugStartTime);
+		console.log('animation started at ' + this._debugStartTime);
 		this.isPaused = false;
 		this.momentIndex = 0;
 		this.animate();
@@ -131,7 +131,7 @@
 	 * @return {void}
 	 */	
 	AnimatedLayer.prototype.animationResume = function() {
-		console.log("resume");
+		console.log('resume');
 		this.isPaused = false;
 		this.animate();
 	};
@@ -143,7 +143,7 @@
 	 */
 	AnimatedLayer.prototype.animationStop = function() {
 		var _debugEndTime = new Date().getTime();
-		console.log("animation stoped at " + _debugEndTime + ", " + (_debugEndTime - this._debugStartTime) + "ms");
+		console.log('animation stoped at ' + _debugEndTime + ', ' + (_debugEndTime - this._debugStartTime) + 'ms');
 		this.animationPause();
 		this.clearMap();
 		this.momentIndex = 0; // TODO: dublicated with animationStart
@@ -164,14 +164,14 @@
 		this.dataLayer.clear();
 //		if (this.dataLayerGroup) {
 //			this.dataLayerGroup.clearLayers();
-//			map.removeLayer(this.dataLayerGroup);			
+//			map.removeLayer(this.dataLayerGroup);
 //		}
 		for(i in map._layers){
 			if(map._layers[i]._path != undefined) {
 				try {
 					map.removeLayer(map._layers[i]);
 				} catch(e) {
-					console.log("problem with " + e + map._layers[i]);
+					console.log('problem with ' + e + map._layers[i]);
 				}
 			}
 		}

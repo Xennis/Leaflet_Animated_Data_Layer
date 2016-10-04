@@ -9,33 +9,20 @@
 	 */
 	function MapDisplay(elementID) {
 
-		// Replace 'examples.map-i87786ca' with your map id.
 		var osmUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-		var osmAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+		var osmAttribution = '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors';
 
 		var baseLayer = L.tileLayer(osmUrl, {
 			maxZoom: 18,
 			styleId: 997,
 			attribution: osmAttribution
 		});
-		//var midnightLayer  = L.tileLayer(osmUrl, {
-		//	styleId: 999,
-		//	attribution: osmAttribution
-		//});
 	
 		this.map = L.map(elementID, {
 			center: [47, 20],
 			zoom: 4,
 			layers: [baseLayer]
 		});
-		//
-		//var baseMaps = {
-		//	"Night View": midnightLayer,
-		//	"Minimal": baseLayer
-		//};
-		//
-		//L.control.layers(baseMaps).addTo(this.map);
-		//L.control.scale().addTo(map);
 	};
 	
 	/**

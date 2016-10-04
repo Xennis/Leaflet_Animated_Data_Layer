@@ -19,7 +19,6 @@
 	var navigationBar = new NavigationBar(animatedLayer);
 	
 	mapDisplay.addLegend(options1);
-	//mapDisplay.addTitle("Title", "Subtitle");		
 
 	var setData = function(data, options) {
 		navigationBar.config(data.length);

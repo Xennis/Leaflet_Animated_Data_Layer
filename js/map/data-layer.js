@@ -27,7 +27,7 @@
 	 */
 	DataLayer.prototype.setOptions = function(options) {
 		this.grades = options.grades;
-		this.circleRadius_m = options.circleRadius * 1000;		// in meters
+		this.circleRadius_m = options.circleRadius * 1000; // in meters
 		this.rectangleHalfSize = options.gridSize / 2;
 		this.fillOpacity = options.fillOpacity;
 	};
@@ -108,10 +108,10 @@
 	 */
 	DataLayer.prototype.getColor = function(v) {
 		return v > this.grades[0].val ? this.grades[0].color :
-           v > this.grades[1].val ? this.grades[1].color :
-           v > this.grades[2].val ? this.grades[2].color :
-           v > this.grades[3].val ? this.grades[3].color :
-                                    this.grades[4].color;
+			v > this.grades[1].val ? this.grades[1].color :
+			v > this.grades[2].val ? this.grades[2].color :
+			v > this.grades[3].val ? this.grades[3].color :
+			this.grades[4].color;
 	};
 
 	/**
@@ -123,10 +123,10 @@
 	 */
 	DataLayer.prototype.getXc = function(v) {
 		return v > this.grades[0].val ? 100 :
-           v > this.grades[1].val ? 50 :
-           v > this.grades[2].val ? 30 :
-           v > this.grades[3].val ? 20 :
-                                    10;
+			v > this.grades[1].val ? 50 :
+			v > this.grades[2].val ? 30 :
+			v > this.grades[3].val ? 20 :
+			10;
 	};	
 
 	/**
@@ -137,7 +137,7 @@
 	DataLayer.prototype.clear = function() {
 		if (this.visualizationType === 'heatmap') {
 			this.heatmapLayer._clear();
-			this.heatmapLayer.clearData();			
+			this.heatmapLayer.clearData();
 		} else {
 			this.layer.clearLayers();
 		}

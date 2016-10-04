@@ -9,15 +9,15 @@
 	 */
 	function NavigationBar(animatedLayer) {
 		this.animatedLayer = animatedLayer;
-		this.button_start = $("#button_start");
-		this.button_pause = $("#button_pause");
-		this.checkbox_loop = $("#checkbox_loop");
-		this.select_visualization = $("#select_visualization");
-		this.select_speed = $("#select_speed");
-		this.input_date = $("#input_date");
-		this.slider_date = $("#slider_date");
-		this.select_data = $("#select_data");
-		this._observeSemaphore = false;		// Prevent observe function get calls twice
+		this.button_start = $('#button_start');
+		this.button_pause = $('#button_pause');
+		this.checkbox_loop = $('#checkbox_loop');
+		this.select_visualization = $('#select_visualization');
+		this.select_speed = $('#select_speed');
+		this.input_date = $('#input_date');
+		this.slider_date = $('#slider_date');
+		this.select_data = $('#select_data');
+		this._observeSemaphore = false; // Prevent observe function get calls twice
 		
 		this.observe();
 	}
@@ -38,10 +38,10 @@
 	 * @return {void}
 	 */
 	NavigationBar.prototype.reset = function() {
-		this.button_start.text("Start");
-		this.button_pause.text("Pause");
-		this.button_pause.prop("disabled", true);
-		this.input_date.val("");
+		this.button_start.text('Start');
+		this.button_pause.text('Pause');
+		this.button_pause.prop('disabled', true);
+		this.input_date.val('');
 		this.slider_date.val(0);
 	};
 	
